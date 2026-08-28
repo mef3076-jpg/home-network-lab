@@ -1,4 +1,4 @@
-# Network Baseline
+I# Network Baseline
 
 ## Current Network Layout
 
@@ -120,3 +120,96 @@ IPv6 configuration:
 - Neighbor discovery
 - Router advertisement concepts
 - LAN/WAN IPv6 verification
+
+## AdGuard Preparation
+
+Checks completed:
+
+- AdGuard Home not installed
+- Router configuration backup created
+- Storage verified
+
+Storage:
+- Overlay available space: ~7GB
+
+Status:
+Ready for AdGuard Home installation
+
+## AdGuard Installation
+
+Installed:
+- AdGuard Home 0.107.57-r1
+
+Binary:
+- /usr/bin/AdGuardHome
+
+Status:
+- Installed
+- Not enabled yet
+
+Reason:
+- DNS port 53 currently owned by dnsmasq
+
+Next:
+- Reconfigure dnsmasq for DHCP only
+- Configure AdGuard Home as DNS server
+
+## AdGuard Home Service Started
+
+Status:
+- Installed
+- Enabled
+- Running
+
+Verification:
+- AdGuard Home listening on TCP port 3000
+
+Current DNS:
+- dnsmasq still owns port 53
+
+Next:
+- Configure AdGuard
+- Migrate DNS service
+- Test client DNS filtering## AdGuard Home Configuration
+
+Status:
+- Installed
+- Running
+
+Web Interface:
+- Port: 8080
+
+DNS Service:
+- Port: 5353 (temporary)
+
+Current DNS ownership:
+- dnsmasq: port 53
+- AdGuard Home: port 5353
+
+Upstream DNS:
+- Quad9 DNS over HTTPS
+
+Current migration plan:
+1. Verify AdGuard works
+2. Move DNS from dnsmasq to AdGuard
+3. Test client devices
+4. Add filtering list
+
+## DNS Testing
+
+Installed:
+- bind-dig DNS troubleshooting tools
+
+Verification:
+
+Command:
+dig @127.0.0.1 -p 5353 google.com
+
+Result:
+- AdGuard Home responded successfully
+- Upstream DNS resolution working
+- Quad9 DoH upstream configured
+
+Current state:
+- dnsmasq handles client DNS
+- AdGuard running on port 5353
