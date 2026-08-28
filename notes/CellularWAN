@@ -1,0 +1,23 @@
+## Milestone: Cellular WAN Connection
+
+### Verification
+
+Confirmed the RM551 modem successfully provides network access through the router's USB interface.
+
+Tests performed:
+- Verified USB WAN interface status using ifstatus
+- Confirmed DHCP address assignment
+- Verified default route creation
+- Tested internet connectivity using ping
+
+Results:
+- WAN interface: usb0
+- Protocol: DHCP
+- IPv4 connectivity: Successful
+- Packet loss: 0%
+
+Skills practiced:
+- DHCP troubleshooting
+- Network interface analysis
+- Routing verification
+- Linux command-line troubleshooting
