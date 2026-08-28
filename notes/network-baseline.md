@@ -213,3 +213,26 @@ Result:
 Current state:
 - dnsmasq handles client DNS
 - AdGuard running on port 5353
+- ## DNS Migration - Phase 1 Complete
+
+Changed dnsmasq forwarding:
+
+Before:
+Client → dnsmasq → modem DNS
+
+After:
+Client → dnsmasq → AdGuard Home → Quad9 DoH
+
+Configuration:
+dnsmasq upstream:
+127.0.0.1#5353
+
+Verification:
+- DNS resolution successful
+- AdGuard Home responding
+- No client DHCP changes required
+
+Next:
+- Verify client queries appear in AdGuard
+- Add blocklists
+- Test DNS filtering
