@@ -27,3 +27,29 @@ Testing different modem configurations to improve:
 - USB networking modes
 - Router/modem integration
 - Linux device troubleshooting
+
+## DNS Service Verification
+
+### Test
+
+Command:
+
+
+
+### Results
+
+Identified `dnsmasq` as the DNS service currently running on the router.
+
+DNS service was listening on:
+- Local router interface
+- LAN interface
+- WAN/modem interface
+- IPv6 interfaces
+
+### Skills Practiced
+
+- Identifying running network services
+- Understanding DNS ports
+- Linux service troubleshooting
+- Router DNS architecture
+
