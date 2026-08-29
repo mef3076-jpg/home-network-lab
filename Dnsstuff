@@ -1,0 +1,60 @@
+## DNS Performance Testing
+
+AdGuard Home configured with DNS-over-HTTPS upstreams.
+
+Average response times:
+
+| Provider | Response |
+|---|---:|
+| Cloudflare DoH | 73 ms |
+| Google DoH | 81 ms |
+| Quad9 DoH | 188 ms |
+
+Notes:
+- Cloudflare provided the lowest latency.
+- Quad9 provided additional security-focused DNS filtering but higher latency.
+- Investigating IPv6 localhost DNS latency.
+
+## Ticket #3 - DNS Ad Blocking
+
+### Problem
+Wanted network-wide blocking of advertisements and tracking domains.
+
+### Solution
+Installed AdGuard Home and configured dnsmasq to forward DNS requests.
+
+DNS Flow:
+
+Client
+ |
+ v
+dnsmasq :53
+ |
+ v
+AdGuard Home :5353
+ |
+ v
+DNS-over-HTTPS upstream
+
+### Verification
+
+Tested normal DNS:
+
+Command:
+dig @127.0.0.1 -p 5353 openai.com
+
+Result:
+Successful DNS resolution.
+
+Tested blocked domains:
+
+doubleclick.net
+ads.google.com
+
+Result:
+Returned sinkhole addresses:
+- 0.0.0.0
+- ::
+
+Status:
+Resolved
